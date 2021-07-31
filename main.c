@@ -5,7 +5,7 @@
 #define MAX 1000
 
 void menu(char*);
-char* loadDatabase(char*);
+// char* loadDatabase(char*);
 
 int main(int argc, char** argv) {
 	if(argc < 2) {
@@ -23,10 +23,26 @@ int main(int argc, char** argv) {
 }
 
 void menu(char* database_path) {
-	puts("PlaceHolder");
-	loadDatabase(database_path);
+	int option;
+	puts("------- Invetory Management -------");
+	puts("Options: 1 - Register, 2 - Remove, 3 - Logs, 4 - Exit");
+	printf("Answer: ");
+	scanf("%d", &option);
+	switch(option) {
+	case 1:
+		break;
+	case 2:
+		break;
+	case 3:
+		break;
+	case 4:
+		exit(0);
+		break;
+	}
+  	// loadDatabase(database_path);
 }
 
+/*
 char* loadDatabase(char* database_path) {
 	FILE *filePointer;
 	char dataReaded[MAX];
@@ -45,3 +61,4 @@ char* loadDatabase(char* database_path) {
 	}
 	return "None";
 }
+*/
