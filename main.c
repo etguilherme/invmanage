@@ -4,10 +4,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char* valuearray[50][10];
+#define MAX 50
+
+typedef struct name {
+	char name[MAX];
+}name;
+
+name registeredValues[MAX];
+int lastIndex;
 
 void menu();
 void registervalue();
+void logvalue();
 
 int main(int argc, char** argv) {
 	menu();
@@ -17,26 +25,36 @@ int main(int argc, char** argv) {
 void menu() {
 	int option;
 	puts("----- Inventory Management -----");
-	printf("%sAnswer: ", "1: Register\n0: Exit\n");
+	printf("%sAnswer: ", "1: Register\n2: Log\n0: Exit\n");
 	scanf("%d", &option);
 	while(option != 0) {
 		switch(option) {
 		case 1:
 			registervalue();
 			break;
+		case 2:
+			logvalue();
+			break;
 		case 0:
 			exit(0);
 			break;
 		}
-		printf("%sAnswer: ", "1: Register\n0: Exit\n");
-		scanf("%d", &option);		
+		puts("---------------------------------------------");
+		printf("%sAnswer: ", "1: Register\n2: Log\n0: Exit\n");
+		scanf("%d", &option);
 	}
 }
 
 void registervalue() {
-	char* value;
+	char value[MAX];
 	printf("%s: ", "Value to register");
-	scanf("%s", &value);
-	valuearray[0][0] = value;
-	printf("%s\n", valuearray[0]);
+	scanf("%s", registeredValues[lastIndex].name);
+	lastIndex++;
+}
+
+void logvalue() {
+	puts("------------------- Values --------------------");
+	for(int i = 0; i < lastIndex; i++) {
+		printf("%d: %s\n", i, registeredValues[i].name);
+	}
 }
