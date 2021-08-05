@@ -1,6 +1,3 @@
-// TODO: Make registervalue know what is the last registered value in the index
-// to avoid, wiping registered values. Maybe use a global variable to count
-// how many values was registered
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,14 +5,14 @@
 
 typedef struct name {
 	char name[MAX];
-}name;
-
-name registeredValues[MAX];
-int lastIndex;
+} name;
 
 void menu();
 void registervalue();
 void logvalue();
+
+name registeredValues[MAX];
+int lastIndex;
 
 int main(int argc, char** argv) {
 	menu();
